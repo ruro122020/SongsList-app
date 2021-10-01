@@ -1,3 +1,30 @@
+# React-Redux
+
+A small application to practice using redux with react. Under normal circumstances, redux would be over kill for this application. Redux is normally used for larg applications.
+
+### Quick Note about Imports and Webpack
+
+1. Importing actions like so: "./actions" is the same as importing it like this: "./actions/index" if the file in any folder is specifically called index. When providing the name of a folder Webpack will look for a file called index and render it.
+
+2. When importing from another file:
+   - If the export is named you need to use the curly braces.
+   - If the export is default you don't need the curly braces.
+
+## Redux
+
+### The connect funtion in react-redux
+
+1. The connect function takes a few arguments.
+2. The first argument it takes is the mapStateToProps function which is named by convention but you can call it anything you want like: mapMyState. When passing this function to the connect function, it will give you access to state. In the mapStateToProps function you must return an object with the state you want to use in your component. Connect will then merge the returned object into the wrapped component’s props.
+
+   > Example: connect(mapStateToProps)(SongList)
+   > See documentation for more details: https://react-redux.js.org/api/connect#connect-parameters
+
+3. Connect receives a second argument which is where we pass in action creators in an object. In the example below selectSong is an action creator where we would import it at the top and pass it in to the connect function.
+   > Example: connect(mapStateToProps, { selectSong: selectSong })(SongList)
+
+The connect function looks at all the functions inside the object and wraps them up in another javascript function. Whenever we call the action function, connect will automatically call the dispatch function which will then update the state. So anytime you ever want to call an action creator from a component pass it into the connect function.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
